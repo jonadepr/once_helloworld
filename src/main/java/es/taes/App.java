@@ -63,7 +63,7 @@ public class App {
         System.out.println(", Last: " + last);
       }
       // Insertar un empleado 1 y salir 0
-      int op = -1;
+      int o = -1;
       Scanner scan = new Scanner(System.in);
       String nombre, apellido;
       int edad;
@@ -71,8 +71,8 @@ public class App {
         System.out.println("Selecciona la opcion: ");
         System.out.println("1 - Anyadir empleado.");
         System.out.println("0 - Salir.");
-        op = scan.nextInt();
-        if (op == 1) {
+        o = scan.nextInt();
+        if (o == 1) {
           System.out.println("Dame el nombre: ");
           nombre = scan.next();
           System.out.println("Dame el apellido: ");
@@ -82,7 +82,7 @@ public class App {
           System.out.println("Insertando nuevo empleado...");
           stmt.executeUpdate("INSERT ignore INTO Employees(first, last, age) VALUES('"+nombre+"','"+apellido+"',"+edad+");");
         }
-      } while (op!=0);
+      } while (o!=0);
 
       // Clean-up environment
       rs.close();
