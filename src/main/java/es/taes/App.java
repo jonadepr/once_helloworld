@@ -1,6 +1,7 @@
 package es.taes;
 
 import java.sql.Statement;
+import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,7 +14,7 @@ public class App {
 
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.jdbc2.optional.MysqlDataSource";
-    static final String DB_URL = "jdbc:mysql://iprocuratio.com:3333/test_jdbc";
+    static final String DB_URL = "jdbc:mysql://iprocuratio.com:3333/joseN";
 
     // Database credentials
     static final String USER = "root";
@@ -61,10 +62,32 @@ public class App {
         System.out.print(", First: " + first);
         System.out.println(", Last: " + last);
       }
+      // Insertar un empleado 1 y salir 0
+      int op = -1;
+      Scanner scan = new Scanner(System.in);
+      String nombre, apellido;
+      int edad;
+      do {
+        System.out.println("Selecciona la opcion: ");
+        System.out.println("1 - Anyadir empleado.");
+        System.out.println("0 - Salir.");
+        op = scan.nextInt();
+        if (op == 1) {
+          System.out.println("Dame el nombre: ");
+          nombre = scan.next();
+          System.out.println("Dame el apellido: ");
+          apellido =  scan.next();
+          System.out.println("Dame la edad: ");
+          edad =  scan.nextInt();
+          System.out.println("Insertando nuevo empleado...");
+          stmt.executeUpdate("INSERT ignore INTO Employees(first, last, age) VALUES('"+nombre+"','"+apellido+"',"+edad+");");
+        }
+      } while (op!=0);
+
       // Clean-up environment
       rs.close();
       stmt.close();
       conn.close();
-
+      scan.close();
     }
 }
