@@ -89,7 +89,7 @@ public class App {
     rs.close();
     stmt.close();
     conn.close();
-    scan.close();
+    scan.close(); 
 
   }
 }
